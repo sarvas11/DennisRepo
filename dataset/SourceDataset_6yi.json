@@ -1,0 +1,37 @@
+{
+	"name": "SourceDataset_6yi",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ContainertoContainer2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Victoria Test.txt",
+				"container": "testcontainer"
+			},
+			"columnDelimiter": " ",
+			"escapeChar": "\\",
+			"firstRowAsHeader": false,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

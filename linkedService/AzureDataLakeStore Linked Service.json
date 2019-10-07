@@ -1,0 +1,14 @@
+{
+	"name": "AzureDataLakeStore Linked Service",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDataLakeStore",
+		"typeProperties": {
+			"dataLakeStoreUri": "https://adlsclsarvas.azuredatalakestore.net/webhdfs/v1",
+			"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+			"subscriptionId": "6bfb88db-92a9-4e0e-969f-da7eca23e6c2",
+			"resourceGroupName": "a-clsarvRG"
+		}
+	}
+}
