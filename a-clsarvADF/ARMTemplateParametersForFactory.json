@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "a-clsarvADF"
+		},
+		"integrationRuntime_clsarvasIR": {
+			"value": "clsarvasIR"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"ContainertoContainer2_connectionString": {
+			"value": ""
+		},
+		"Destination_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://aclsarvstorage.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://aclsarvstorage.dfs.core.windows.net"
+		},
+		"AzureDataLakeStore Linked Service_properties_typeProperties_dataLakeStoreUri": {
+			"value": "https://adlsclsarvas.azuredatalakestore.net/webhdfs/v1"
+		},
+		"AzureDataLakeStore Linked Service_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"AzureDataLakeStore Linked Service_properties_typeProperties_subscriptionId": {
+			"value": "6bfb88db-92a9-4e0e-969f-da7eca23e6c2"
+		},
+		"AzureDataLakeStore Linked Service_properties_typeProperties_resourceGroupName": {
+			"value": "a-clsarvRG"
+		}
+	}
+}

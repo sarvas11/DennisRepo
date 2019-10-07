@@ -1,0 +1,147 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "a-clsarvADF"
+		},
+		"integrationRuntime_clsarvasIR": {
+			"type": "string",
+			"metadata": "Integration runtime name",
+			"defaultValue": "clsarvasIR"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
+		},
+		"ContainertoContainer2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ContainertoContainer2'"
+		},
+		"Destination_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Destination'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://aclsarvstorage.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://aclsarvstorage.dfs.core.windows.net"
+		},
+		"AzureDataLakeStore Linked Service_properties_typeProperties_dataLakeStoreUri": {
+			"type": "string",
+			"defaultValue": "https://adlsclsarvas.azuredatalakestore.net/webhdfs/v1"
+		},
+		"AzureDataLakeStore Linked Service_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"AzureDataLakeStore Linked Service_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "6bfb88db-92a9-4e0e-969f-da7eca23e6c2"
+		},
+		"AzureDataLakeStore Linked Service_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "a-clsarvRG"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"integrationRuntime_clsarvasIR": {
+						"value": "[parameters('integrationRuntime_clsarvasIR')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureDataLakeStorage2_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage2_accountKey')]"
+					},
+					"ContainertoContainer2_connectionString": {
+						"value": "[parameters('ContainertoContainer2_connectionString')]"
+					},
+					"Destination_connectionString": {
+						"value": "[parameters('Destination_connectionString')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage2_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStore Linked Service_properties_typeProperties_dataLakeStoreUri": {
+						"value": "[parameters('AzureDataLakeStore Linked Service_properties_typeProperties_dataLakeStoreUri')]"
+					},
+					"AzureDataLakeStore Linked Service_properties_typeProperties_tenant": {
+						"value": "[parameters('AzureDataLakeStore Linked Service_properties_typeProperties_tenant')]"
+					},
+					"AzureDataLakeStore Linked Service_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('AzureDataLakeStore Linked Service_properties_typeProperties_subscriptionId')]"
+					},
+					"AzureDataLakeStore Linked Service_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('AzureDataLakeStore Linked Service_properties_typeProperties_resourceGroupName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ArmTemplate_0')]"
+			]
+		}
+	]
+}
